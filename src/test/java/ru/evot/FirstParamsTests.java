@@ -32,8 +32,6 @@ public class FirstParamsTests {
         open("/text-box");
     }
 
-    Faker faker = new Faker();
-
     @ParameterizedTest(name = "Проверка ввода валидного имени {0}")
     @ValueSource(strings = {"Petya", "Маша", "PETYA", "маша"})
     void inputName(String setName) {
