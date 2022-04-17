@@ -70,14 +70,14 @@ public class FirstParamsTests {
     }
 
     @ParameterizedTest(name = "Проверка ввода и вывода полного адреса латиницей {0}")
-    @MethodSource("AddressSource")
+    @MethodSource("addressSource")
     void inputAddress(String setAddress, String outAddress) {
         $("#currentAddress").setValue(setAddress);
         $("#submit").click();
         $("#output").$("#currentAddress").shouldHave(text(outAddress));
     }
 
-    static Stream<Arguments> AddressSource() {
+    static Stream<Arguments> addressSource() {
         return Stream.of(
                 Arguments.of("USA, Tillmanbury, 97024 Mohammed Meadow",
                         "Current Address :USA, Tillmanbury, 97024 Mohammed Meadow"),
@@ -86,14 +86,14 @@ public class FirstParamsTests {
     }
 
     @ParameterizedTest(name = "Проверка ввода и вывода полного адреса кириллицей {0}")
-    @MethodSource("AddressSourceRus")
+    @MethodSource("addressSourceRus")
     void inputAddressRus(String setAddress, String outAddress) {
         $("#currentAddress").setValue(setAddress);
         $("#submit").click();
         $("#output").$("#currentAddress").shouldHave(text(outAddress));
     }
 
-    static Stream<Arguments> AddressSourceRus() {
+    static Stream<Arguments> addressSourceRus() {
         return Stream.of(
                 Arguments.of("Российская Федерация, г. Москва, " +
                                 "ул. Фрунзе, д. 15, индекс 300000",
